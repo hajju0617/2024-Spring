@@ -4,6 +4,8 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
+// @Setter, @Getter, @ToString: Lombok에서 제공하는 어노테이션으로
+// 각각 setter, getter, toString 메서드를 자동으로 생성해줍니다. 이를 통해 코드 작성을 간소화할 수 있습니다.
 public class BoardPostReq {
     private String title;
     private String contents;
