@@ -38,6 +38,13 @@ public class BoardController {
     public int deleteBoard(@RequestParam(name="board_id") int boardId) {
         return service.deleteBoard(boardId);
     }
+    /*
+    http://localhost:8080/?board_id=3 (X)
+    "status": 404,
+    "error": "Not Found"
+
+    http://localhost:8080/board?board_id=3 (O)
+     */
 }
 
 /*
