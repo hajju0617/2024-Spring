@@ -22,13 +22,15 @@ public class BoardService {
         System.out.println("BoardService - postBoard");
         return mapper.postBoard(p);
     }
-    public int deleteBoard(int boardId) {
-        return mapper.deleteBoard(boardId);
-    }
     public List<BoardGetRes> getBoardList() {
         return mapper.getBoardList();
     }
     public BoardGetDetailRes getBoardOne(long boardId) {
         return mapper.getBoardOne(boardId);
     }
+    public int deleteBoard(int boardId) {
+        return mapper.deleteBoard(boardId);
+    }
+
+
 }

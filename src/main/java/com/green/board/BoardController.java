@@ -18,6 +18,12 @@ import java.util.List;
 public class BoardController {
     private final BoardService service;
 
+    @PostMapping
+    public int postBoard(@RequestBody BoardPostReq p) {
+        System.out.println(p);
+        service.postBoard(p);
+        return 1;
+    }
     @GetMapping
     public List<BoardGetRes> getBoardList() {
         return service.getBoardList();
@@ -28,18 +34,46 @@ public class BoardController {
         return service.getBoardOne(boardId);
     }
 
-    @PostMapping
-    public int postBoard(@RequestBody BoardPostReq p) {
-        System.out.println(p);
-        service.postBoard(p);
-        return 10;
-    }
-
     @DeleteMapping
     public int deleteBoard(@RequestParam(name="board_id") int boardId) {
         return service.deleteBoard(boardId);
     }
 }
+
+/*
+@RequestBody, @PathVariable, and @RequestParam 은
+Spring Framework 에서 HTTP 요청을 처리할 때 사용되는 어노테이션(annotation).
+ 각각의 용도와 데이터를 받는 방식이 다릅니다.
+
+@RequestBody
+용도: 클라이언트가 서버로 보내는 JSON, XML 같은
+HTTP 요청 본문(body)을 Java 객체로 변환하여 받기 위해 사용됩니다.
+사용 예: 클라이언트가 JSON 형태로 데이터를 전송하고, 서버에서 이를 객체로 매핑하여 처리할 때 사용합니다.
+참고: @RequestBody 를 사용하려면 클래스 경로에 Jackson 같은 메시지 컨버터가 있어야 합니다.
+
+@PathVariable
+용도: URL 경로에 포함된 변수를 메서드의 파라미터로 추출할 때 사용됩니다.
+REST ful 웹 서비스에서 자주 사용되며, 리소스를 지정할 때 유용합니다.
+사용 예: /users/{userId}와 같은 URL 에서 userId를 추출하여 메서드의 파라미터로 전달할 때 사용합니다.
+
+@RequestParam
+용도: HTTP 요청의 쿼리 파라미터(Query Parameters) 또는 폼 데이터(Form Data)를
+메서드의 파라미터로 받기 위해 사용됩니다.
+사용 예: /search?keyword=spring 에서 keyword 의 값을 메서드의 파라미터로 전달받고 싶을 때 사용합니다.
+
+차이점
+@RequestBody 는 요청 본문을 객체로 변환하여 사용하며
+주로 JSON 이나 XML 같은 데이터를 처리할 때 사용됩니다.
+
+@PathVariable 은 URL 의 일부를 변수로 사용하고 싶을 때 사용되며
+주로 REST ful 서비스의 리소스를 식별할 때 사용됩니다.
+
+@RequestParam 은 주로 쿼리 파라미터나 폼 데이터를 메서드 파라미터로 받을 때 사용되며
+간단한 데이터를 전달받고자 할 때 유용합니다.
+
+이 세 어노테이션은 Spring MVC에서 클라이언트로부터 데이터를 받는 방식을 다양화하여
+개발자가 상황에 맞게 적절한 방식을 선택할 수 있도록 합니다.
+ */
 
 /*
 Spring Framework에서 @Controller와 @RestController는 웹 애플리케이션에서
