@@ -12,7 +12,7 @@ public class BoardApplication {
 }
 /*
 Spring MVC 실행 순서
-사용자 -> controller -> service -> dao -> mapper -> controller -> view -> 사용자
+사용자 -> controller -> service -> dao -> mapper -> (service) -> controller -> view -> 사용자
 
 1.사용자 : 사용자가 웹 인터페이스를 통해 특정 작업을 요청함 (ex) 폼 제출, 링크 클릭 등)
 
@@ -23,10 +23,10 @@ Controller 는 사용자의 입력을 받고, 어떤 처리가 필요한지 결�
 사용자의 요청에 따라 필요한 데이터 처리나 계산, 조건 판단 등의 작업을 수행함.
 데이터베이스와 관련된 작업이 필요하면 DAO 를 호출합니다.
 
-4. DAO (Data Access Object) : 실제 데이터베이스에 접근하여 데이터를 조회하거나 수정하는 역할을 함
+4.DAO (Data Access Object) : 실제 데이터베이스에 접근하여 데이터를 조회하거나 수정하는 역할을 함
 CRUD (생성, 조회, 수정, 삭제) 작업을 담당합니다.
 
-5. Mapper : DAO 에서 호출되며, SQL 쿼리를 구성하고 실행하는 역할을 함.
+5.Mapper : DAO 에서 호출되며, SQL 쿼리를 구성하고 실행하는 역할을 함.
 MyBatis 와 같은 영속성 프레임워크에서 사용됩니다          (영속성 : 영속성(Persistence) 이란 데이터가 프로그램이 종료되어도 사라지지 않고 지속되는 성질을 의미
 Mapper 는 데이터베이스와의 구체적인 통신을 담당하며, 결과를 DAO 로 반환함
 

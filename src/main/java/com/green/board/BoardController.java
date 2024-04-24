@@ -3,6 +3,7 @@ package com.green.board;
 import com.green.board.model.BoardGetDetailRes;
 import com.green.board.model.BoardGetRes;
 import com.green.board.model.BoardPostReq;
+import com.green.board.model.BoardPutReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;                   // 목적: 화면 응답
@@ -13,10 +14,15 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("board")
+@RequestMapping("/board")        // URL + http 메소드
 @RequiredArgsConstructor
 public class BoardController {
-    private final BoardService service;
+    private final BoardService service;         // RequiredArgsConstructor 로 인해 final BoardService service 의 생성자를 자동으로 만들어줌
+                                                // RequiredArgsConstructor 주석처리 하면 private final BoardService service 빨간줄
+
+//    public BoardController(BoardService service) {
+//        this.service = service;                           //이 생성자를 만들어주는 게 @RequiredArgsConstructor
+//    }
 
     @PostMapping
     public int postBoard(@RequestBody BoardPostReq p) {
@@ -28,15 +34,18 @@ public class BoardController {
     public List<BoardGetRes> getBoardList() {
         return service.getBoardList();
     }
-
-    @GetMapping("{boardId}")
+    @GetMapping("/{boardId}")
     public BoardGetDetailRes getBoardOne(@PathVariable long boardId) {
         return service.getBoardOne(boardId);
     }
-
     @DeleteMapping
     public int deleteBoard(@RequestParam(name="board_id") int boardId) {
         return service.deleteBoard(boardId);
+    }
+    // 많은 데이터가 넘어올때(ex.INSERT, UPDATE) 는 제이슨 (RequestBody 는 무조건 제이슨)
+    @PutMapping
+    public int putBoard(@RequestBody BoardPutReq p) {
+        return service.putBoard(p);
     }
     /*
     http://localhost:8080/?board_id=3 (X)

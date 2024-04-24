@@ -1,19 +1,22 @@
-package com.green.board;
+package com.green.board;            // xml 파일과 맵핑 (<mapper namespace="com.green.board.BoardMapper">)
 
 import com.green.board.model.BoardGetDetailRes;
 import com.green.board.model.BoardGetRes;
 import com.green.board.model.BoardPostReq;
+import com.green.board.model.BoardPutReq;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 
-@Mapper
+@Mapper //빈등록
 public interface BoardMapper {
-    int postBoard(BoardPostReq p);
-    List<BoardGetRes> getBoardList();
-    BoardGetDetailRes getBoardOne(long boardId);
-    int deleteBoard(int p);
+    int postBoard(BoardPostReq p);  // INSERT
+    List<BoardGetRes> getBoardList();   // SELECT
+    BoardGetDetailRes getBoardOne(long boardId);    // SELECT
+    int putBoard(BoardPutReq p); // UPDATE
+    int deleteBoard(int p); //DELETE
+
 }
 
 /* DAO 제작
@@ -35,6 +38,15 @@ IoC 컨테이너는 객체의 생성과 관리를 담당하며
 /*
 FrontEnd -> BackEnd 요청 + 데이터 전송 방법
 - Query String (쿼리 스트링) or Parameter (파라미터) : URL에 데이터를 실어서 보내는 방식 (쿼리 스트링은 주소창에 내용이 노출이 된다.)
+Query String :Query String은 URL의 일부로서
+서버에 데이터를 요청할 때 추가적인 정보를 전달하기 위해 사용됩니다.
+URL 의 뒤에 물음표(?)를 붙이고, 그 뒤에 key-value 쌍으로 이루어진 데이터를 나열합니다.
+EX) URL
+https://example.com/search?q=spring&page=2
+이 URL 에서 Query String 은 "q=spring&page=2"입니다.
+"q"는 검색어를 나타내는 key이고, "spring"은 검색어 값입니다.
+"page"는 페이지 번호를 나타내는 key이고, "2"는 페이지 번호 값입니다.
+
 1. URL 뒤에서 ?로 시작
 2. key, value 로 구성
 3. 구분자는 &
@@ -49,9 +61,7 @@ Body에 데이터를 담아서 보낸다
 1.여러가지 형태일 수 있다
 2.FormData
 3.Not FormData (ex. JSON, XML 등)
- */
 
-/*
 JSON
 1.JavaScript Object Notation
 2.자바스크립트에서 객체 생성할때 사용하는 문법을 채택
