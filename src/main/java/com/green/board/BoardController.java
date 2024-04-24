@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/board")        // URL + http 메소드
+@RequestMapping("/board")        // URL + http 메소드 (@RequestMapping 은 스프링 MVC 프레임워크에서 사용되는 어노테이션으로 HTTP 요청을 해당 메서드로 매핑하는 역할을 함)
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService service;         // RequiredArgsConstructor 로 인해 final BoardService service 의 생성자를 자동으로 만들어줌

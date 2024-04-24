@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper //빈등록
 public interface BoardMapper {
-    int postBoard(BoardPostReq p);  // INSERT
+    int postBoard(BoardPostReq p);  // INSERT       // 인터페이스라 구현부 작성x
     List<BoardGetRes> getBoardList();   // SELECT
     BoardGetDetailRes getBoardOne(long boardId);    // SELECT
     int putBoard(BoardPutReq p); // UPDATE
