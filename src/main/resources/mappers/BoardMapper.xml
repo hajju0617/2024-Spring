@@ -19,7 +19,7 @@
     <select id="getBoardOne">
         SELECT board_id as boardId, title, contents, writer, created_at as createdAt
         FROM board
-        WHERE board_id = #{board_id}
+        WHERE board_id = #{boardId}
     </select>
 
     <update id="putBoard">
