@@ -39,7 +39,7 @@ public class BoardController {
         return service.getBoardOne(boardId);
     }
     @DeleteMapping
-    public int deleteBoard(@RequestParam(name="board_id") int boardId) {
+    public int deleteBoard(@RequestParam(name="board_id") int boardId) {        // ex) ?board_id=3
         return service.deleteBoard(boardId);
     }
     // 많은 데이터가 넘어올때(ex.INSERT, UPDATE) 는 제이슨 (RequestBody 는 무조건 제이슨)
