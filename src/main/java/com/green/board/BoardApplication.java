@@ -11,6 +11,12 @@ public class BoardApplication {
 
 }
 /*
+
+MVC
+M : Model       -->> (DAO = Data Access Object) 데이터베이스와 관련  (ex.board model, user model)
+V : View    ----> 프론트에서 제공
+C : Controller      -----> Controller, Service
+
 Spring MVC 실행 순서
 사용자 -> controller -> service -> dao -> mapper -> (service) -> controller -> view -> 사용자
 
@@ -43,7 +49,7 @@ Controller 로부터 받은 데이터를 화면에 표시합니다.
 /*
 Restful
 - 메소드(요청을 보내는 방식) : get, post, put(patch), delete
-- 메소드 mapping DB => get == select, post == insert, put == update, delete == delete
+- 메소드 mapping DB ----> get == select, post == insert, put == update, delete == delete
 - 주소값을 깔끔하게 한다.
 - 동사는 method로 구분
 - 명사는 url로 구분
@@ -51,7 +57,7 @@ Restful
 
 EX)
 Create : (get)/board -->> select list
-Read : (get)/board/1 -->> select one ( /1 : path variable 로 PK값을 보낸다.)
+Read : (get)/board/1 -->> select one ( /1 : path variable 로 PK 값을 보낸다.)
 Read : (post)/board -->> insert data
 Update : (put)/board -->> update data
 Delete : (delete)/board -->> delete data
